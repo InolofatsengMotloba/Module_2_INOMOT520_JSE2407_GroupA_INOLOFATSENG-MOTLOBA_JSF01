@@ -12,9 +12,31 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-
   </head>
   <body class="bg-orange-600">
+    
+    <!-- Navigation Bar -->
+    <header class="sticky z-50 top-0">
+      <nav class="bg-gray-500 border-gray-200">
+        <div
+          class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+        >
+          <!-- Logo -->
+          <button class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img
+              src="./public/online-shop.png"
+              class="h-8"
+              alt="Flowbite Logo"
+            />
+            <span
+              class="self-center text-2xl font-semibold whitespace-nowrap text-white"
+            >
+              SwiftCart
+            </span>
+          </button>
+        </div>
+      </nav>
+    </header>
     <div id="app"></div>
     <script type="module" src="/main.js"></script>
   </body>
