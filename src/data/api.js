@@ -2,8 +2,12 @@ import { data } from "autoprefixer";
 
 export default () => ({
   products: [],
+  originalProducts: [],
+  filteredProducts: [],
   selectedProduct: null,
-  modalOpen: false, 
+  modalOpen: false,
+  selectedCategory: "",
+  sortOption: "default",
 
   async getProducts() {
     try {
@@ -16,8 +20,74 @@ export default () => ({
       let data = await response.json();
 
       this.products = data;
+      this.originalProducts = [...this.products];
+      this.applyFilters();
     } catch (error) {
       console.error("Error:", error);
+    }
+  },
+
+  async getProductsByCategory(category) {
+    try {
+      let response = await fetch(
+        `https://fakestoreapi.com/products/category/${category}`
+      );
+
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      let data = await response.json();
+
+      this.products = data;
+      this.originalProducts = [...this.products];
+      this.applyFilters();
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  },
+
+  applyFilters() {
+    let filtered = this.products;
+
+    // Filter by category
+    if (this.selectedCategory) {
+      filtered = filtered.filter(
+        (product) => product.category === this.selectedCategory
+      );
+    }
+
+    // Sort by price
+    if (this.sortOption && this.sortOption !== "default") {
+      if (this.sortOption === "low-to-high") {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (this.sortOption === "high-to-low") {
+        filtered.sort((a, b) => b.price - a.price);
+      }
+    } else {
+      filtered = [...this.originalProducts];
+    }
+
+    this.filteredProducts = filtered;
+  },
+
+  resetFilters() {
+    this.selectedCategory = "";
+    this.sortOption = "default";
+    this.filteredProducts = [...this.originalProducts];
+  },
+
+  sortByPrice(option) {
+    this.sortOption = option;
+    this.applyFilters();
+  },
+
+  filterByCategory(category) {
+    this.selectedCategory = category;
+    if (category === "") {
+      this.getProducts(); // Fetch all products when default is selected
+    } else {
+      this.getProductsByCategory(category);
     }
   },
 
@@ -47,5 +117,23 @@ export default () => ({
   closeModal() {
     this.modalOpen = false;
   },
-});
 
+  init() {
+    this.getProducts();
+    document
+      .getElementById("category-filter")
+      .addEventListener("change", (event) => {
+        this.filterByCategory(event.target.value);
+      });
+    document
+      .getElementById("price-sort")
+      .addEventListener("change", (event) => {
+        this.sortByPrice(event.target.value);
+      });
+
+    // Set default sort option
+    this.sortOption = document.getElementById("price-sort").value;
+
+    
+  },
+});
