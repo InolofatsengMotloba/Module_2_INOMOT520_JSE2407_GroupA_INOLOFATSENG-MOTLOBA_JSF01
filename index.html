@@ -182,69 +182,28 @@
       class="grid lg:flex gap-y-4 gap-x-48 lg:items-start mt-3 mx-auto justify-center"
     >
       <!-- Filter -->
-      <div class="flex lg:w-[31.25rem] sm:w-[95%] md:w-full relative">
-        <button
-          id="dropdown-button"
-          class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200"
-          type="button"
-        >
-          <span x-text=""></span>
-          <svg
-            class="w-2.5 h-2.5 ms-2.5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 10 6"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="m1 1 4 4 4-4"
-            />
-          </svg>
-        </button>
-        <div
-          id="dropdown"
-          class="z-10 absolute top-[100%] hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
-        >
-          <ul
-            class="py-2 text-sm text-gray-700"
-            aria-labelledby="dropdown-button"
-          >
-            <li
-              x-on:click=""
-              class="inline-flex w-full px-4 py-2 hover:bg-gray-100"
-            >
-              All categories
-            </li>
-            <template>
-              <li>
-                <button
-                  type="button"
-                  class="inline-flex w-full px-4 py-2 hover:bg-gray-100"
-                  x-text="category"
-                ></button>
-              </li>
-            </template>
-          </ul>
-        </div>
-        
-      </div>
-      <!-- Sort -->
-      <div class="flex sm:w-[95%] max-w-[21rem] md:w-full">
-        <label for="sort" class="w-20 my-auto font-semibold"> Sort by: </label>
+      <div>
         <select
-          x-on:change="handleSort"
-          x-model="sorting"
-          name=""
-          id="sort"
-          class="p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+          id="category-filter"
+          class="p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-blue-600"
+        >
+          <option value="">Default</option>
+          <option value="men's clothing">Men's clothing</option>
+          <option value="women's clothing">Women's clothing</option>
+          <option value="jewelery">Jewelry</option>
+          <option value="electronics">Electronics</option>
+        </select>
+      </div>
+
+      <!-- Sort -->
+      <div>
+        <select
+          id="price-sort"
+          class="p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-blue-600"
         >
           <option value="default">Default</option>
-          <option value="low">Price: Low to High</option>
-          <option value="high">Price: High to Low</option>
+          <option value="low-to-high">Low to high</option>
+          <option value="high-to-low">High to low</option>
         </select>
       </div>
     </div>
@@ -409,7 +368,6 @@
         </section>
       </section>
     </div>
-
     <script type="module" src="./src/main.js" defer></script>
   </body>
 </html>
