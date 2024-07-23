@@ -8,8 +8,10 @@ export default () => ({
   modalOpen: false,
   selectedCategory: "",
   sortOption: "default",
+  loading: true, // Add this line to track loading state
 
   async getProducts() {
+    this.loading = true; // Set loading to true when fetching starts
     try {
       let response = await fetch(`https://fakestoreapi.com/products`);
 
@@ -24,6 +26,8 @@ export default () => ({
       this.applyFilters();
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      this.loading = false; // Set loading to false when fetching ends
     }
   },
 
@@ -46,6 +50,7 @@ export default () => ({
   },
 
   async getProductsByCategory(category) {
+    this.loading = true; // Set loading to true when fetching starts
     try {
       let response = await fetch(
         `https://fakestoreapi.com/products/category/${category}`
@@ -62,6 +67,8 @@ export default () => ({
       this.applyFilters();
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      this.loading = false; // Set loading to false when fetching ends
     }
   },
 
