@@ -188,8 +188,20 @@
     </div>
 
     <!-- Product List -->
-    <div id="app"></div>
+    <div id="app">
+      <section x-data="products" x-init="getProducts()">
+        <section>
+          <template x-for="product in products" >
+            <h2
+              class="text-lg line-clamp-2 font-extrabold leading-snug text-slate-600"
+              x-text="product.title"
+            ></h2>
+          </template>
+        </section>
+      </section>
+    </div>
 
-    <script type="module" src="./src/main.js"></script>
+    <script type="module" src="./src/main.js" defer></script>
   </body>
 </html>
+
