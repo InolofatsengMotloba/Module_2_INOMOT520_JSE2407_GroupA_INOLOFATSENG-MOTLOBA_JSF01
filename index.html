@@ -314,12 +314,30 @@
               </div>
               <div class="w-2/3 pl-4">
                 <h2
-                  x-text="selectedProduct?.title"
-                  class="text-2xl font-bold mb-2"
+                  x-text="selectedProduct.title"
+                  class="mb-4 text-lg line-clamp-2 font-extrabold leading-snug text-slate-600"
                 ></h2>
+                <p
+                  class="text-base line-clamp-2 font-extrabold text-slate-500 leading-snug mb-2"
+                  x-text="'Price: $' + selectedProduct.price"
+                ></p>
+                <div class="justify-start flex-1">
+                  <span
+                    x-text="selectedProduct.category"
+                    class="mb-3 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
+                  ></span>
+                </div>
+                <p
+                  class="text-base line-clamp-2 font-extrabold text-slate-500 leading-snug mb-2"
+                  x-text="'Ratings:' + selectedProduct.rating.count + '  ' + '⭐' + selectedProduct.rating.rate"
+                ></p>
+                <p
+                  class="text-gray-700 mb-6"
+                  x-text="selectedProduct.description"
+                ></p>
                 <button
-                  x-on:click="closeModal()"
-                  class="absolute top-2 right-2 p-2"
+                  x-on:click="closeModal"
+                  class="absolute top-2 right-2 p-4 text-gray-600 hover:text-gray-800 transition-colors text-2xl"
                 >
                   X
                 </button>
