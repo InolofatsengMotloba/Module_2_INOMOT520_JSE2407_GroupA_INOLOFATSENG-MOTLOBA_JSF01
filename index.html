@@ -282,6 +282,7 @@
                     </template>
                   </div>
                   <button
+                    x-on:click="showProductModal()"
                     class="flex rounded-lg justify-center bg-green-700 px-3 py-2 text-sm font-medium text-white hover:bg-green-900 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300"
                   >
                     Product Details
@@ -294,6 +295,16 @@
                 </div>
               </div>
             </template>
+          </div>
+
+          <!-- Product Details Modal -->
+          <div
+            x-show="modalOpen"
+            class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+          >
+            <div
+              class="bg-white flex flex-row p-8 rounded-lg shadow-lg w-1/2 relative"
+            ></div>
           </div>
         </section>
       </section>

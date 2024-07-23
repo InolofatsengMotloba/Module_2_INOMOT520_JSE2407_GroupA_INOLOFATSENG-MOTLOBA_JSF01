@@ -17,5 +17,14 @@ export default () => ({
       console.error("Error:", error);
     }
   },
-});
 
+  showProductModal(product) {
+    this.selectedProduct = product;
+    this.modalOpen = true;
+  },
+
+  closeModal() {
+    this.modalOpen = false;
+  },
+  
+});
