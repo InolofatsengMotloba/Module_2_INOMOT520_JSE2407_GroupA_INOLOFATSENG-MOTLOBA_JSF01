@@ -27,6 +27,24 @@ export default () => ({
     }
   },
 
+  async getProductDetails(productId) {
+    try {
+      let response = await fetch(
+        `https://fakestoreapi.com/products/${productId}`
+      );
+
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      let data = await response.json();
+
+      this.selectedProduct = data;
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  },
+
   async getProductsByCategory(category) {
     try {
       let response = await fetch(
@@ -58,23 +76,15 @@ export default () => ({
     }
 
     // Sort by price
-    if (this.sortOption && this.sortOption !== "default") {
-      if (this.sortOption === "low-to-high") {
-        filtered.sort((a, b) => a.price - b.price);
-      } else if (this.sortOption === "high-to-low") {
-        filtered.sort((a, b) => b.price - a.price);
-      }
-    } else {
+    if (this.sortOption === "low-to-high") {
+      filtered.sort((a, b) => a.price - b.price);
+    } else if (this.sortOption === "high-to-low") {
+      filtered.sort((a, b) => b.price - a.price);
+    } else if (this.sortOption === "default") {
+      // If default, use original products
       filtered = [...this.originalProducts];
     }
-
     this.filteredProducts = filtered;
-  },
-
-  resetFilters() {
-    this.selectedCategory = "";
-    this.sortOption = "default";
-    this.filteredProducts = [...this.originalProducts];
   },
 
   sortByPrice(option) {
@@ -88,24 +98,6 @@ export default () => ({
       this.getProducts(); // Fetch all products when default is selected
     } else {
       this.getProductsByCategory(category);
-    }
-  },
-
-  async getProductDetails(productId) {
-    try {
-      let response = await fetch(
-        `https://fakestoreapi.com/products/${productId}`
-      );
-
-      if (!response.ok) {
-        throw new Error();
-      }
-
-      let data = await response.json();
-
-      this.selectedProduct = data;
-    } catch (error) {
-      console.error("Error:", error);
     }
   },
 
@@ -133,7 +125,5 @@ export default () => ({
 
     // Set default sort option
     this.sortOption = document.getElementById("price-sort").value;
-
-    
   },
 });
