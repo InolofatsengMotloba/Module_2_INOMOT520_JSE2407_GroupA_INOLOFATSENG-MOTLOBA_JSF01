@@ -179,33 +179,33 @@
 
     <!-- Filter and Sort -->
     <div
-      class="grid lg:flex gap-y-4 gap-x-6 lg:items-start mt-3 mx-auto justify-center"
+      class="grid lg:flex gap-y-8 gap-x-6 lg:items-start mt-3 mx-auto justify-evenly"
     >
       <!-- Filter -->
-      <div class="flex flex-col">
-        <p class="text-lg font-semibold mb-2">Filter by Category:</p>
+      <div class="flex sm:w-[95%] max-w-[21rem] md:w-full">
+        <label class="w-20 my-auto font-semibold">Filter:</label>
         <select
           id="category-filter"
-          class="p-2.5 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm outline-none appearance-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
+          class="p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
         >
-          <option value="">Default</option>
-          <option value="men's clothing">Men's clothing</option>
-          <option value="women's clothing">Women's clothing</option>
-          <option value="jewelery">Jewelry</option>
-          <option value="electronics">Electronics</option>
+          <option value="">All Categories</option>
+          <option value="men's clothing">men's clothing</option>
+          <option value="women's clothing">women's clothing</option>
+          <option value="jewelery">jewelry</option>
+          <option value="electronics">electronics</option>
         </select>
       </div>
 
       <!-- Sort -->
-      <div class="flex flex-col">
-        <p class="text-lg font-semibold mb-2">Sort by Price:</p>
+      <div class="flex sm:w-[95%] max-w-[21rem] md:w-full">
+        <label class="w-20 my-auto font-semibold">Sort by</label>
         <select
           id="price-sort"
-          class="p-2.5 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm outline-none appearance-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
+          class="p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
         >
           <option value="default">Default</option>
-          <option value="low-to-high">Low to high</option>
-          <option value="high-to-low">High to low</option>
+          <option value="low-to-high">Price: Low to high</option>
+          <option value="high-to-low">Price: High to low</option>
         </select>
       </div>
     </div>
