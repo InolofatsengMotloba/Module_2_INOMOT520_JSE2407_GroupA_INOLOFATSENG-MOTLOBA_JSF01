@@ -21,13 +21,16 @@ I used the following technologies for my SwiftCart app
 ## Usage Examples 
 ### Home Page
 Users can Navigate to the Home page by clicking on the Logo which will display a grid of products available on the app.
+
 ![alt text](images/Navigation.png)
 
 ### Filter by Category & Sort by Price
 Filtering and sorting options are provided to help users find the products they need: Select a category from the "Filter" dropdown menu to display products from that category only & Choose an option from the "Sort by" dropdown menu to sort products by price, either from low to high or high to low.
+
 ![alt text](images/FilterSort.png)
 
 ### Viewing Product Details in Modal
 Click on the "Product Details" button on the product card to view detailed information about the product, including its image, title, price, category, rating, and description. The product details are displayed in a modal window for a seamless user experience.
+
 ![alt text](images/Products.png)
 ![alt text](images/Modal.png)
